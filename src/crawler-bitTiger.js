@@ -6,15 +6,19 @@
 'use strict';
 var cheerio = require('cheerio');
 var webdriver = require('selenium-webdriver');
+var chrome = require('selenium-webdriver/chrome');
+var path = require('chromedriver').path;
 var By = require('selenium-webdriver').By;
 var Event = require('./models/event');
 var BITTIGER_HOST_URL = 'http://bittiger.io';
+var service = new chrome.ServiceBuilder(path).build();
+chrome.setDefaultService(service);
 
 module.exports = BitTigerCrawler;
 
 function BitTigerCrawler() {
   this.driver = new webdriver.Builder()
-    .forBrowser('chrome')
+    .withCapabilities(webdriver.Capabilities.chrome())
     .build();
 }
 

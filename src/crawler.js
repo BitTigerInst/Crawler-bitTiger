@@ -12,6 +12,9 @@ var bitTigerCrawler = new BitTigerCrawler();
 var CRAWL_INTERVAL = 1000 * 60 * 60 * 6;
 mongoose.connect(config.MONGO_URL);
 
+fbCrawler.crawl('bittiger.io');
+bitTigerCrawler.crawl();
+
 setInterval(function () {
   fbCrawler.crawl('bittiger.io');
   bitTigerCrawler.crawl();

@@ -4,14 +4,19 @@
 var _ = require('lodash');
 var cheerio = require('cheerio');
 var webdriver = require('selenium-webdriver');
+var chrome = require('selenium-webdriver/chrome');
+var path = require('chromedriver').path;
 var By = require('selenium-webdriver').By;
 var Post = require('./models/post');
+var service = new chrome.ServiceBuilder(path).build();
+chrome.setDefaultService(service);
+console.log('=========== chromedriver path: ' + path + '===========');
 
 module.exports = FbCrawler;
 
 function FbCrawler() {
   this.driver = new webdriver.Builder()
-    .forBrowser('chrome')
+    .withCapabilities(webdriver.Capabilities.chrome())
     .build();
 }
 
