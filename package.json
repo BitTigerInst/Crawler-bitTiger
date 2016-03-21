@@ -1,0 +1,31 @@
+{
+  "name": "Crawler-BitTiger",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a sample user system",
+  "repository": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.1.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node ./src/crawler.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cheerio": "^0.20.0",
+    "connect-mongo": "^1.1.0",
+    "connect-timeout": "^1.7.0",
+    "lodash": "^4.3.0",
+    "mongoose": "^4.4.6",
+    "q": "^1.4.1",
+    "selenium-webdriver": "^2.53.1",
+    "winston": "^2.1.1"
+  },
+  "engines": {
+    "node": "4.2.1"
+  }
+}

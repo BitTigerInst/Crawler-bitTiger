@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb/legacy",
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "new-cap": 1,
+    "no-console": 0,
+    "no-use-before-define": [2, { "functions": false, "classes": false }]
+  }
+}
