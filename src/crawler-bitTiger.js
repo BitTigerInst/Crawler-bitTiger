@@ -5,21 +5,15 @@
 /* jshint node:true */
 'use strict';
 var cheerio = require('cheerio');
-var webdriver = require('selenium-webdriver');
-var chrome = require('selenium-webdriver/chrome');
-var path = require('chromedriver').path;
+var webdriver = require('./bittiger-web-driver');
 var By = require('selenium-webdriver').By;
 var Event = require('./models/event');
 var BITTIGER_HOST_URL = 'http://bittiger.io';
-var service = new chrome.ServiceBuilder(path).build();
-chrome.setDefaultService(service);
 
 module.exports = BitTigerCrawler;
 
 function BitTigerCrawler() {
-  this.driver = new webdriver.Builder()
-    .withCapabilities(webdriver.Capabilities.chrome())
-    .build();
+  this.driver = webdriver.build();
 }
 
 BitTigerCrawler.prototype.crawl = function () {
