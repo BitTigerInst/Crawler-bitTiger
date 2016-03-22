@@ -17,7 +17,6 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "cheerio": "^0.20.0",
-    "chromedriver": "^2.21.2",
     "connect-mongo": "^1.1.0",
     "connect-timeout": "^1.7.0",
     "lodash": "^4.3.0",
