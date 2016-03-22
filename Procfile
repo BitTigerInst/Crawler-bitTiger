@@ -1,2 +1,2 @@
-web: node src/server/server.js
-crawler: node src/server/crawler.js
+web: node src/server.js
+crawler: node src/crawler.js
