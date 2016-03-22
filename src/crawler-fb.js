@@ -4,19 +4,30 @@
 var _ = require('lodash');
 var cheerio = require('cheerio');
 var webdriver = require('selenium-webdriver');
-var chrome = require('selenium-webdriver/chrome');
-var path = require('chromedriver').path;
+
+// var chrome = require('selenium-webdriver/chrome');
+// var path = require('chromedriver').path;
 var By = require('selenium-webdriver').By;
 var Post = require('./models/post');
-var service = new chrome.ServiceBuilder(path).build();
-chrome.setDefaultService(service);
-console.log('=========== chromedriver path: ' + path + '===========');
+
+// var service = new chrome.ServiceBuilder(path).build();
+// chrome.setDefaultService(service);
+
+var username = 'yuqinlear';
+var accessKey = '901a39b0-cd83-4d73-b08a-a3d20f0ba104';
 
 module.exports = FbCrawler;
 
 function FbCrawler() {
   this.driver = new webdriver.Builder()
-    .withCapabilities(webdriver.Capabilities.chrome())
+    .withCapabilities({
+      browserName: 'chrome',
+      platform: 'Windows XP',
+      version: '43.0',
+      username: username,
+      accessKey: accessKey
+    })
+    .usingServer('http://' + username + ':' + accessKey + '@ondemand.saucelabs.com:80/wd/hub')
     .build();
 }
 
