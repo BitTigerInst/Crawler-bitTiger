@@ -1,7 +1,7 @@
 /**
  * Created by paul on 3/15/16.
  */
-/* jshint node: true */
+/* eslint-disable no-param-reassign */
 'use strict';
 
 var mongoose = require('mongoose');
@@ -18,7 +18,26 @@ var postSchema = new Schema(
     images: {
       type: Array
     }
+  },
+  {
+    toObject: {
+      virtuals: true
+    },
+    toJSON: {
+      virtuals: true
+    }
   }
 );
+
+postSchema.options.toJSON.transform = function (doc, ret) {
+  delete ret.__v;
+  delete ret._id;
+  delete ret.id;
+};
+
+postSchema.virtual('crawledDate')
+  .get(function () {
+    return this._id.getTimestamp();
+  });
 
 module.exports = mongoose.model('Post', postSchema);
