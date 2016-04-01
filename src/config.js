@@ -6,9 +6,7 @@
 'use strict';
 
 var config = {
-  MONGO_URL: process.env.MONGO_URL,
-  SAUCELABS_USERNAME: process.env.SAUCELABS_USERNAME,
-  SAUCELABS_ACCESS_KEY: process.env.SAUCELABS_ACCESS_KEY
+  MONGO_URL: process.env.MONGO_URL
 };
 var key;
 for (key in config) {
