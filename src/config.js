@@ -6,7 +6,7 @@
 'use strict';
 
 var config = {
-  MONGO_URL: process.env.MONGO_URL
+  MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/test'
 };
 var key;
 for (key in config) {
