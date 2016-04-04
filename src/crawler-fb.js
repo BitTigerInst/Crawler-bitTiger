@@ -19,19 +19,22 @@ FbCrawler.prototype.crawl = function (fbPageName) {
   this.driver
     .findElements(By.xpath("//div[@role='article']"))
     .then(
-    function (elements) {
-      elements.forEach(function (element) {
-        element.getInnerHtml().then(
-          function (html) {
-            parseFbPost(html);
-          }
-        );
+      function (elements) {
+        elements.forEach(
+          function (element) {
+            element.getInnerHtml()
+              .then(
+                function (html) {
+                  parseFbPost(html);
+                });
+          });
+      },
+      function (err) {
+        console.log(err);
       });
-    }, function (err) {
-      console.log(err);
-    }
-  );
-  this.driver.quit();
+    this.driver.sleep(3000);
+    // rather than quit(), we want to reuse the webdriver session.
+    this.driver.close();
 };
 
 function parseFbPost(eventHtml) {

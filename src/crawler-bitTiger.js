@@ -22,16 +22,20 @@ BitTigerCrawler.prototype.crawl = function () {
   this.driver
     .findElements(By.xpath("(//div[@class='course-desc'])"))
     .then(
-    function (elements) {
-      elements.forEach(function (element) {
-        element.getInnerHtml().then(
-          function (html) {
-            parseBitTigerEvent(html);
-          }
-        );
+      function (elements) {
+        elements.forEach(
+          function (element) {
+            element.getInnerHtml().then(
+              function (html) {
+                parseBitTigerEvent(html);
+              });
+            });
+      },
+      function (err) {
+        console.log(err);
       });
-    });
-  this.driver.quit();
+  this.driver.sleep(3000);
+  this.driver.close();
 };
 
 function parseBitTigerEvent(eventHtml) {
