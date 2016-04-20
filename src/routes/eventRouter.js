@@ -7,7 +7,7 @@ var Event = require('../models/event');
 
 module.exports = function (app) {
   app.get('/events', function (req, res) {
-    Event.find({}).limit(req.query.counts)
+    Event.find({}).sort({_id: -1}).limit(req.query.counts)
       .exec(function (err, events) {
         if (err) {
           res.statsu(500).send('fetch events failed');

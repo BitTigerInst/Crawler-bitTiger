@@ -35,7 +35,7 @@ BitTigerCrawler.prototype.crawl = function () {
         console.log(err);
       });
   this.driver.sleep(3000);
-  this.driver.close();
+  this.driver.quit();
 };
 
 function parseBitTigerEvent(eventHtml) {

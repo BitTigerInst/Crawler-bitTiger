@@ -33,8 +33,7 @@ FbCrawler.prototype.crawl = function (fbPageName) {
         console.log(err);
       });
     this.driver.sleep(3000);
-    // rather than quit(), we want to reuse the webdriver session.
-    this.driver.close();
+    this.driver.quit();
 };
 
 function parseFbPost(eventHtml) {

@@ -7,15 +7,13 @@ var config = require('./config');
 var mongoose = require('mongoose');
 var FbCrawler = require('./crawler-fb');
 var BitTigerCrawler = require('./crawler-bitTiger');
-var fbCrawler = new FbCrawler();
-var bitTigerCrawler = new BitTigerCrawler();
 var CRAWL_INTERVAL = 1000 * 60 * 60 * 6;
 mongoose.connect(config.MONGO_URL);
 
-fbCrawler.crawl('bittiger.io');
-bitTigerCrawler.crawl();
+(new FbCrawler()).crawl('bittiger.io');
+(new BitTigerCrawler).crawl();
 
 setInterval(function () {
-  fbCrawler.crawl('bittiger.io');
-  bitTigerCrawler.crawl();
+  (new FbCrawler()).crawl('bittiger.io');
+  (new BitTigerCrawler).crawl();
 }, CRAWL_INTERVAL);
