@@ -14,10 +14,10 @@ mongoose.connect(config.MONGO_URL);
 
 (new FbCrawler()).crawl('bittiger.io');
 (new BitTigerCrawler).crawl();
-(new GithubActivityFetcher).fetch();
+GithubActivityFetcher.fetch();
 
 setInterval(function () {
   (new FbCrawler()).crawl('bittiger.io');
   (new BitTigerCrawler).crawl();
-  (new GithubActivityFetcher).fetch();
+  GithubActivityFetcher.fetch();
 }, CRAWL_INTERVAL);
